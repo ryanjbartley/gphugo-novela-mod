@@ -5,10 +5,9 @@ let copyTextContainer = document.getElementById("copyText");
 let toolTip = document.getElementById("toolTip");
 
 function copyToClipboard(){
-    copyTextContainer.value = currentUrl
+    copyTextContainer.text = currentUrl
     copyTextContainer.focus();
-    copyTextContainer.select();
-    document.execCommand("copy");
+    navigator.clipboard.writeText(copyTextContainer.text)
 
     toolTip.style.animationName = "pan-toolbar";
 

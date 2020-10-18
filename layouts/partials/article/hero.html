@@ -17,7 +17,7 @@
         </header>
         {{ with .Page.Params.hero }}
         <div class="article-hero-image" id="ArticleImage__Hero">
-            <img src="{{ $.Site.BaseURL }}{{ . }}">
+            <img src="{{ $.Site.BaseURL }}{{ . }}" alt={{ $.Page.Params.alttext }} >
         </div>
         {{ end }}
     </div>

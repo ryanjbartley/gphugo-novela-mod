@@ -27,17 +27,19 @@ of the whole section and append them to our $next slice. */}}
     {{ $articles := partialCached "func/GetArticles" . "articles"}}
     {{ $next = $next | append (first $diff $articles) }}
 {{ end }}
-<section id="articleNext" class="section nartrow">
+<section id="articleNext" class="section narrow">
     <h3 class="footer-next-heading">More articles from {{ .Site.Title }}</h3>
     <div class="footer-spacer"></div>
     <div class="next-articles-grid" numberOfArticles={numberOfArticles}>
         <div class="post-row">
             {{ range $index, $article := $next }}
-                <a href="{{ $article.RelPermalink }}" class="article-link"
-                {{ if not $index}} id="article-link-bigger"{{ end }}>
+                <a href="{{ $article.RelPermalink }}" 
+                {{ if not $index}} class="article-link article-link-bigger"{{ else }}
+                class="article-link" {{ end }}
+                >
                     <div>
                         <div class="image-container">
-                            <img src="{{ $article.Params.hero }}" class="article-image" />
+                            <img src="{{ $article.Params.hero }}" alt="{{ $article.Params.alttext }}" class="article-image" />
                         </div>
                         <div>
                             <h2 class="article-title">

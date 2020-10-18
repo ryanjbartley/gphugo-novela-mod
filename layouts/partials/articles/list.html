@@ -9,21 +9,27 @@
             {{ if not $counter }}
                 <div class="post-row">
             {{ end }}
-            <a href="{{ $article.RelPermalink }}" class="article-link"
-            {{ if and (eq ($biggerFirst) true) (eq ($biggerPlaced) false) }}
-              {{ if eq $counter 0 }}
-                id="article-link-bigger"
-                {{ $biggerPlaced = true }}
-              {{ end }}
-            {{ else if and (not $biggerFirst) (not $biggerPlaced) }}
-              {{ if ne $counter 0 }}
-                id="article-link-bigger"
-                {{ $biggerPlaced = true }}
-              {{ end }}
+            <a href="{{ $article.RelPermalink }}"
+            {{ if eq ($biggerFirst) true }}
+                {{ if eq ($biggerPlaced) false }}
+                    {{ if eq $counter 0 }}
+                        class="article-link article-link-bigger"
+                        {{ $biggerPlaced = true }}
+                    {{ end }}
+                {{ else }}
+                    class="article-link"
+                {{ end }}
+            {{ else if eq ($biggerFirst) false }}
+                    {{ if ne $counter 0 }}
+                        class="article-link article-link-bigger"
+                        {{ $biggerPlaced = true }}
+                    {{ else }}
+                        class="article-link"
+                    {{ end }}
             {{ end }}>
               <div class="article-data-outer">
                 <div class="image-container">
-                  <img src="{{ $article.Params.hero }}" class="article-image" />
+                  <img src="{{ $article.Params.hero }}" alt="{{ $article.Params.alttext }}" class="article-image" />
                 </div>
                 <div class="article-data">
                   <h2 class="article-title">

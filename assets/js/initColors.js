@@ -5,14 +5,14 @@ initColors();
 
 function initColors(){
     if (localStorage.getItem("isLight") === null) {
-        localStorage.setItem("isLight", 'true');
+        localStorage.setItem("isLight", 'false');
     }
 
-    if (localStorage.getItem("isLight") === 'false'){
-        makeDark();
+    if (localStorage.getItem("isLight") === 'true'){
+        makeLight();
     }
     else{
-        makeLight();
+        makeDark();
     }
 }
 

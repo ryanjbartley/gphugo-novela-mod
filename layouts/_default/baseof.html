@@ -1,8 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="{{.Site.Language.Lang }}" xml:lang="{{.Site.Language.Lang }}">
 
 {{ partial "head/head.html" . }}
 
 <body class="line-numbers">
+    {{ if .Site.Params.share.facebook }}
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v8.0" nonce="1ugZD9PZ"></script>
+    {{ end }}
 
     {{ $script := resources.Get "js/initColors.js" }}
     <script src="{{ $script.RelPermalink }}"></script>
